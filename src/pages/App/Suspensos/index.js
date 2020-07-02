@@ -128,14 +128,6 @@ function Suspensos () {
 
   }
 
-	function semEsgotados (product){
-		if (product.esgotado==0){
-
-		  toast.success("Nenhum produto esgotado");
-		  return;
-
-	  }
-	}
 
 
   function renderProduct (product) {
@@ -190,8 +182,9 @@ function Suspensos () {
 
   return (
     <Container>
-      
+     
       {products.map(product => renderProduct(product))}
+	  
     </Container>
   )
 }
