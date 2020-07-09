@@ -70,22 +70,6 @@ export const OrderCard = styled.div`
     font-size: 14px;
     color: #706e7b;
   }
-  button {
-    font-size: 16px;
-    width: 100%;
-    margin-top: 10px;
-    text-align: center;
-    padding: 15px;
-    border-radius: 10px;
-    background: #f15454;
-    color: #fff;
-    font-weight: bold;
-    transition: all 0.2s;
-
-    &:hover {
-      background: #e62638;
-    }
-  }
 `;
 
 export const MyCards = styled.div`

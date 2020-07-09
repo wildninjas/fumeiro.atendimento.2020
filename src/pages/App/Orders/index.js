@@ -93,18 +93,7 @@ function Orders () {
 
 
 	   
-  function imprimir() { 
-	 
-	var divContents = document.getElementById("CardPedidos").innerHTML; 
-	var a = window.open('', '', 'height=500, width=500'); 
-	a.document.write('<html><style>#select1 {display: none; }#button1{display: none; }</style>'); 
-	a.document.write(`<body ><br>`); 
-	a.document.write(divContents); 
-	a.document.write('</body></html>'); 
-	a.document.close(); 
-	a.print();
-	  
-} 
+
 
 
   function renderFilters () {
@@ -127,14 +116,30 @@ function Orders () {
 
 
   function renderOrder (order) {
+
+	function imprimir() { 
+	 
+		var divContents = document.getElementById(order.id).innerHTML; 
+		var a = window.open('', '', 'height=500, width=500'); 
+		a.document.write('<html><style>#select1 {display: none; }#button1{display: none; }</style>'); 
+		a.document.write(`<body ><br>`); 
+		a.document.write(divContents); 
+		a.document.write('</body></html>'); 
+		a.document.close(); 
+		a.print();
+		  
+	} 
+
     return filters[order.status] ? (
-      <OrderCard id="CardPedidos" key={order.id} status={order.status}>
+      <OrderCard id={order.id}  key={order.id} status={order.status}>
 		  
 		
 		
-		
+		 
 		  
         <div id="pedido" className='orderHeader'>
+			
+
           <h2>
             Pedido <strong>#{order.id}</strong> - {order.user.name}
           </h2>
@@ -171,11 +176,19 @@ function Orders () {
 
          {/*Adicionando os dados que faltavam no painél do administrador*/}
 
-        <span>
+
+		 <span>
           <strong>Observações: </strong>
           {order.observations}<br></br>
         </span>
-       
+		<span>
+		<strong>Forma de Entrega: </strong>
+          {order.type}<br></br>
+        </span>
+		<span>
+		<strong>Valor da Entrega:</strong> € 
+          {order.entrega}<br></br>
+        </span>
         <span>
           <strong>Endereço: </strong>
           {order.street + ' ' + order.number}<br></br>
@@ -190,10 +203,7 @@ function Orders () {
           <strong>Código Postal: </strong>
           {order.zip_code}<br></br>
         </span>
-		<span>
-		<strong>Valor da Entrega:</strong> € 
-          {order.entrega}<br></br>
-        </span>
+
         <span>
 		<strong>Forma de Pagamento: </strong>
           {order.pagamento}<br></br>
@@ -203,6 +213,7 @@ function Orders () {
 		<strong>Telemóvel: </strong>
           {order.cel}<br></br>
         </span>
+
       </OrderCard>
     ) : null
   }
